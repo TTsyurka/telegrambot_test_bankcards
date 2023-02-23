@@ -9,19 +9,19 @@ from telebot import TeleBot, types
 from faker import Faker
 
 
-bot = TeleBot(token='Вставить_свой_токен', parse_mode='html') # создание бота
+bot = TeleBot(token='5823125666:AAHrn4DUHX1nu4pGPot-5w2AO9DpfZX7sWM', parse_mode='html') # создание бота
 
 faker = Faker() # утилита для генерации номеров кредитных карт
 
 # объект клавиаутры
-card_type_keybaord = types.ReplyKeyboardMarkup(resize_keyboard=True)
+card_type_keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
 # первый ряд кнопок
-card_type_keybaord.row(
+card_type_keyboard.row(
     types.KeyboardButton(text='VISA'),
     types.KeyboardButton(text='Mastercard'),
 )
 # второй ряд кнопок
-card_type_keybaord.row(
+card_type_keyboard.row(
     types.KeyboardButton(text='Maestro'),
     types.KeyboardButton(text='JCB'),
 )
@@ -34,7 +34,7 @@ def start_command_handler(message: types.Message):
     bot.send_message(
         chat_id=message.chat.id, # id чата, в который необходимо направить сообщение
         text='Привет! Я умею генерировать номер тестовой банковской карты\nВыбери тип карты:', # текст сообщения
-        reply_markup=card_type_keybaord,
+        reply_markup=card_type_keyboard,
     )
 
 # обработчик всех остальных сообщений
